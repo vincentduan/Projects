@@ -49,7 +49,8 @@ public class ReadXML {
         			word_id = Integer.parseInt(word.attributeValue("id"));
         			String word_cont = word.attributeValue("cont");
         			String word_ne = word.attributeValue("ne");
-        			System.out.println("para:"+para_id + "sentence:"+sentence_id + "word_id:" + word_id + "word_cont:"+word_cont + "word_ne:"+word_ne);
+        			String word_semrelate = word.attributeValue("semrelate");
+        			System.out.println("para:"+para_id + ",sentence:"+sentence_id + ",word_id:" + word_id + ",word_cont:"+word_cont + ",word_ne:"+word_ne + ",semrelate:" + word_semrelate);
         		}
         	}
         }
