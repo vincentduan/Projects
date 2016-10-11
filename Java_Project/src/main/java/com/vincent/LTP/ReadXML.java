@@ -40,9 +40,14 @@ public class ReadXML {
         Element firstDocElement = root.element("doc");
         // 输出其属性
         List<Element> paras = firstDocElement.elements();
-        int para_id = 0;
+        String para_id = "";
         for(Element para : paras){
-        	para_id = Integer.parseInt(para.attributeValue("id"));
+        	String people = "人物:";//人物
+			String time = "时间:";//时间
+			String organization = "组织机构:";//组织机构
+			String location = "地点:";//地点
+			String main="主干:"; //主干
+        	para_id = para.attributeValue("id");
         	List<Element> sentences = para.elements();
         	int sentence_id = 0;
         	for (Element sentence : sentences){
@@ -55,16 +60,58 @@ public class ReadXML {
         			String word_ne = word.attributeValue("ne");//命名实体识别
         			String word_semparent = word.attributeValue("semparent");//语义依存分析父节点id
         			String word_semrelate = word.attributeValue("semrelate");//语义依存分析相应关系
-        			if(word_ne.contains("Nh") || word_ne.contains("Ns") || word_ne.contains("Ni") || word_semrelate.contains("Tmod") || word_semrelate.contains("Time")){
-        				System.out.println("para:"+para_id + ",sentence:"+sentence_id + ",word_id:" + word_id + ",word_cont:"+word_cont + ",word_ne:"+word_ne + ",word_semparent:" + word_semparent + ",semrelate:" + word_semrelate);
-        				doFormat(para_id+"", sentence_id+"", word_id+"", word_cont, word_ne, word_semparent, word_semrelate);
+        			String word_head = word.attributeValue("relate");
+        			/*if(word_ne.contains("Nh") || word_ne.contains("Ns") || word_ne.contains("Ni") || word_semrelate.contains("Tmod") || word_semrelate.contains("Time")){
+        				//System.out.println("para:"+para_id + ",sentence:"+sentence_id + ",word_id:" + word_id + ",word_cont:"+word_cont + ",word_ne:"+word_ne + ",word_semparent:" + word_semparent + ",semrelate:" + word_semrelate);
+        				//doFormat(para_id+"", sentence_id+"", word_id+"", word_cont, word_ne, word_semparent, word_semrelate);
+        			}*/
+        			if(word_ne.toLowerCase().contains("nh")){
+        				//人物
+        				people += word_cont+",";
         			}
-        			if(!word_ne.equals("O")){
-        				
+        			if(word_ne.toLowerCase().contains("ns") || word_ne.toLowerCase().contains("nl")){
+        				//地名
+        				location += word_cont+",";
         			}
-        			
+        			if(word_ne.toLowerCase().contains("ni")){
+        				//组织机构
+        				organization += word_cont+",";
+        			}
+        			if(word_ne.toLowerCase().contains("nt") || word_semrelate.toLowerCase().contains("tmod") || word_semrelate.toLowerCase().contains("time")){
+        				//时间
+        				time += word_cont+",";
+        			}
+        			if(word_head.toLowerCase().contains("hed")){
+        				List<Element> word_args = word.elements();
+        				for(Element word_arg : word_args){
+        					int beg = Integer.parseInt(word_arg.attributeValue("beg"));
+        					int end = Integer.parseInt(word_arg.attributeValue("end"));
+        					for(int i = beg;i<=end;i++){
+        						Element e = (Element) sentence.selectSingleNode("/xml4nlp/doc/para[@id='"+para_id+"']/sent[@id='"+sentence_id+"']"+"/word[@id='"+i+"']");
+        						main += e.attributeValue("cont");
+        						System.out.print(e.attributeValue("cont"));
+        					}
+        				}
+        			}
         		}
         	}
+        	main += ",";
+        	System.out.print(",");
+        	System.out.println();
+        	FileOutputStream fos = new FileOutputStream("D://ollie//result.txt", true);
+    		byte[] para_id_byte = ("段落:" + para_id + "\n").getBytes();
+    		fos.write(para_id_byte);
+    		byte[] people_byte = ("\t\t" + people + "\n").getBytes();
+    		fos.write(people_byte);
+    		byte[] time_byte = ("\t\t" + time + "\n").getBytes();
+    		fos.write(time_byte);
+    		byte[] location_byte = ("\t\t" + location + "\n").getBytes();
+    		fos.write(location_byte);
+    		byte[] organization_byte = ("\t\t" + organization + "\n").getBytes();
+    		fos.write(organization_byte);
+    		byte[] main_byte = ("\t\t" + main + "\n").getBytes();
+    		fos.write(main_byte);
+    		fos.close();
         }
 	}
 	
@@ -85,9 +132,5 @@ public class ReadXML {
 	    fos.close();
 	}
 	
-	public byte[] writeDate(String str) throws Exception{
-		byte[] data = str.getBytes();
-    	return data;
-	}
 	
 }

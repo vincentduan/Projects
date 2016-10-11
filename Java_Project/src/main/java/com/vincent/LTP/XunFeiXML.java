@@ -114,9 +114,10 @@ public class XunFeiXML {
 				+ "&" + "pattern=" + pattern);
 		conn = url.openConnection();
 		conn.connect();
-		innet = new BufferedReader(new InputStreamReader(
-				conn.getInputStream(), "utf-8"));
+		//获得结果
+		innet = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
 		String line;
+		//保存文件到D://ollie//news_result_xunfei.txt
 		while ((line = innet.readLine()) != null) {
 			System.out.println(line);
         	byte[] data = line.getBytes();
