@@ -35,7 +35,7 @@ public class XunFeiXML {
 		String text = "";
 		while ((str = br.readLine()) != null) {
 			//提取关键字
-			if (str.contains("会议")) {
+			if (str.contains("会议")||str.contains("袭击")||str.contains("希拉里")) {
 				text += str+"\n";
 			}
 		}
@@ -91,6 +91,8 @@ public class XunFeiXML {
                 ex.printStackTrace();
             }
         }
+        ReadXML readXML = new ReadXML();
+		readXML.parseXML();
 	}
 	
 	public void doGet() throws Exception{

@@ -16,7 +16,11 @@ import org.dom4j.io.SAXReader;
 public class ReadXML {
 	
 	public static void main(String[] args) throws Exception {
-		
+		ReadXML readXML = new ReadXML();
+		readXML.parseXML();
+	}
+	
+	public void parseXML() throws Exception{
 		SAXReader saxReader = new SAXReader();
 
         Document document = saxReader.read(new File("D://ollie//news_result_xunfei.txt"));
@@ -87,14 +91,13 @@ public class ReadXML {
         					for(int i = beg;i<=end;i++){
         						Element e = (Element) sentence.selectSingleNode("/xml4nlp/doc/para[@id='"+para_id+"']/sent[@id='"+sentence_id+"']"+"/word[@id='"+i+"']");
         						main += e.attributeValue("cont");
-        						System.out.print(e.attributeValue("cont"));
+        						//System.out.print(e.attributeValue("cont"));
         					}
         				}
         			}
         		}
         	}
         	main += ",";
-        	System.out.print(",");
         	System.out.println();
         	FileOutputStream fos = new FileOutputStream("D://ollie//result.txt", true);
     		byte[] para_id_byte = ("段落:" + para_id + "\n").getBytes();
