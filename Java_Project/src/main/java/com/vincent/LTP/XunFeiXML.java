@@ -10,6 +10,10 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 
+/**
+ *  从语言云分析文本
+ */
+
 public class XunFeiXML {
 	
 	public static void main(String[] args) throws Exception {

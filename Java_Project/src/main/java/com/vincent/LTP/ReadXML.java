@@ -1,10 +1,7 @@
 package com.vincent.LTP;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
 import java.util.List;
 
 import org.dom4j.Document;
@@ -81,6 +78,7 @@ public class ReadXML {
         				//时间
         				time += word_cont+",";
         			}
+        			//依存句法分析
         			if(word_head.toLowerCase().contains("hed")){
         				List<Element> word_args = word.elements();
         				for(Element word_arg : word_args){
