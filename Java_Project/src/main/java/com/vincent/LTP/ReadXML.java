@@ -23,7 +23,7 @@ public class ReadXML {
 	public void parseXML() throws Exception{
 		SAXReader saxReader = new SAXReader();
 
-        Document document = saxReader.read(new File("D://ollie//news_result_xunfei.txt"));
+        Document document = saxReader.read(new File("D://ollie//news_result2.txt"));
 
         // 获取根元素
         Element root = document.getRootElement();
@@ -99,7 +99,7 @@ public class ReadXML {
         	}
         	main += ",";
         	System.out.println();
-        	FileOutputStream fos = new FileOutputStream("D://ollie//result.txt", true);
+        	FileOutputStream fos = new FileOutputStream("D://ollie//result2.txt", true);
     		byte[] para_id_byte = ("段落:" + para_id + "\n").getBytes();
     		fos.write(para_id_byte);
     		byte[] people_byte = ("\t\t" + people + "\n").getBytes();
