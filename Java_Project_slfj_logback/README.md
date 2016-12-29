@@ -1,0 +1,1 @@
+-Dlogback.configurationFile=./conf/logback.xml
