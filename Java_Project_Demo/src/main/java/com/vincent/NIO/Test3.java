@@ -1,4 +1,4 @@
-package com.vincent.NIO;
+﻿package com.vincent.NIO;
 
 import java.io.FileInputStream;
 import java.nio.ByteBuffer;
@@ -14,10 +14,10 @@ public class Test3 {
 	{
 	    FileInputStream is = new FileInputStream("D:\\temp_buffer.tmp");
 	 
-	    //Ϊ���ļ����������Ψһ���ļ�ͨ��  FileChannel
+	    //为该文件输入流生成一个唯一的文件通道FileChannel
 	    FileChannel channel = is.getChannel();
 	 
-	    //����һ������Ϊ1024���ֽڻ�����
+	    //开辟一个字节为1024的缓冲区
 	    ByteBuffer buffer = ByteBuffer.allocate(1024);
 	 
 	    channel.read(buffer);
