@@ -1,0 +1,9 @@
+2016-12-29 11:58:51.150 [main] INFO  com.vincent.demo.a.TestA - TestA-info
+2016-12-29 11:58:51.151 [main] WARN  com.vincent.demo.a.TestA - TestA-warn
+2016-12-29 11:58:51.151 [main] ERROR com.vincent.demo.a.TestA - TestA-error
+2016-12-29 11:58:51.151 [main] INFO  com.vincent.demo.b.TestB - TestB-info
+2016-12-29 11:58:51.152 [main] WARN  com.vincent.demo.b.TestB - TestB-warn
+2016-12-29 11:58:51.152 [main] ERROR com.vincent.demo.b.TestB - TestB-error
+2016-12-29 11:58:51.153 [main] WARN  com.vincent.demo.c.TestC - TestC-warn
+2016-12-29 11:58:51.153 [main] ERROR com.vincent.demo.c.TestC - TestC-error
+2016-12-29 11:58:51.154 [main] ERROR com.vincent.demo.d.TestD - TestD-error

@@ -1,0 +1,4 @@
+2016-12-29 11:58:51.147 [main] DEBUG com.vincent.demo.a.TestA - TestA-debug
+2016-12-29 11:58:51.150 [main] INFO  com.vincent.demo.a.TestA - TestA-info
+2016-12-29 11:58:51.151 [main] WARN  com.vincent.demo.a.TestA - TestA-warn
+2016-12-29 11:58:51.151 [main] ERROR com.vincent.demo.a.TestA - TestA-error

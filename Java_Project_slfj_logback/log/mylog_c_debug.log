@@ -1,0 +1,2 @@
+2016-12-29 11:58:51.153 [main] WARN  com.vincent.demo.c.TestC - TestC-warn
+2016-12-29 11:58:51.153 [main] ERROR com.vincent.demo.c.TestC - TestC-error

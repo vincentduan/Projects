@@ -1,0 +1,3 @@
+2016-12-29 11:58:51.151 [main] INFO  com.vincent.demo.b.TestB - TestB-info
+2016-12-29 11:58:51.152 [main] WARN  com.vincent.demo.b.TestB - TestB-warn
+2016-12-29 11:58:51.152 [main] ERROR com.vincent.demo.b.TestB - TestB-error
