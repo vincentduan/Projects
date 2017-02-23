@@ -23,7 +23,8 @@ public class ReadXML {
 	public void parseXML() throws Exception{
 		SAXReader saxReader = new SAXReader();
 
-        Document document = saxReader.read(new File("D://ollie//news_result2.txt"));
+        //Document document = saxReader.read(new File("D://ollie//news_result2.txt"));
+        Document document = saxReader.read(new File("D://ollie//news_result_xunfei.txt"));
 
         // 获取根元素
         Element root = document.getRootElement();
